@@ -24,7 +24,7 @@ router.post("/signup", async (req, res) => {
   const { success } = signupSchema.safeParse(req.body);
 
   if (!success) {
-    return res.json({
+    return res.status(409).json({
       message: "Email already taken / Incorrect inputs",
     });
   }
@@ -34,7 +34,7 @@ router.post("/signup", async (req, res) => {
   });
 
   if (existingUser) {
-    return res.json({
+    return res.status(409).json({
       message: "Email already taken / Incorrect inputs",
     });
   }
@@ -89,7 +89,7 @@ router.post("/signin", async (req, res) => {
   }
 
   res.status(411).json({
-    message: "error while logging in",
+    message: "Invalid Credentials",
   });
 });
 

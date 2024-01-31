@@ -24,6 +24,12 @@ router.post("/transfer", authMiddleware, async (req, res) => {
   //or fully rolled back, maintaining data integrity.
   const { amount, to } = req.body;
 
+  if (amount === null || amount < 1) {
+    return res.status(400).json({
+      message: "Enter Amount",
+    });
+  }
+
   // first we will check our acoount balance
   const fromAccount = await Account.findOne({
     userId: req.userId,
