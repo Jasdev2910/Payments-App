@@ -5,13 +5,24 @@ import { InputBox } from "./InputBox";
 import { Button } from "./Button";
 import { BottomWarning } from "./BottomWarning";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
+import useUser from "../hooks/useUser";
 
 export const Signin = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+
+  const user = useUser();
+  console.log(user);
+  if (user.loading) {
+    return "Loading....";
+  }
+
+  if (user.userDetails) {
+    return <Navigate to="/dashboard" />;
+  }
 
   return (
     <div className="bg-slate-300 h-screen flex justify-center">
@@ -45,9 +56,9 @@ export const Signin = () => {
                     }
                   );
                   setError("");
-                  localStorage.setItem("token", response.data.token);
-                  console.log(response.data.token);
                   navigate("/dashboard");
+                  localStorage.setItem("token", response.data.token);
+                  console.log(response);
                 } catch (error) {
                   setError(error.response.data.message);
                   console.log(error);

@@ -1,11 +1,18 @@
+import { Navigate } from "react-router-dom";
+import useUser from "./hooks/useUser";
 
 function App() {
+  const user = useUser();
 
-  return (
-    <div>
-        Hello world
-    </div>
-  )
+  if (user.loading) {
+    return "loading....";
+  }
+
+  if (!user.userDetails) {
+    return <Navigate to={"/signin"} />;
+  }
+
+  return <Navigate to={"/dashboard"} />;
 }
 
-export default App
+export default App;

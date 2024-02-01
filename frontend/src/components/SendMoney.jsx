@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import doneImg from "../assets/verify.png";
 
 export const SendMoney = () => {
@@ -10,6 +10,7 @@ export const SendMoney = () => {
   const [serchParams] = useSearchParams();
   const id = serchParams.get("id");
   const name = serchParams.get("name");
+  const navigate = useNavigate();
   console.log(amount);
   return (
     <div className="flex justify-center h-screen bg-gray-100">
@@ -74,6 +75,7 @@ export const SendMoney = () => {
                       }, 200);
                     } catch (error) {
                       console.log(error);
+                      navigate("/signup");
                       setError(error.response.data.message);
                     }
                   }}

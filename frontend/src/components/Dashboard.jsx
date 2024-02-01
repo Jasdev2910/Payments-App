@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Appbar } from "./Appbar";
 import { Balance } from "./Balance";
 import { Users } from "./Users";
 import axios from "axios";
 
 const Dashboard = () => {
   const [balance, setBalance] = useState(0);
+
   const getBalnce = async () => {
     try {
       const response = await axios.get(
@@ -16,7 +16,6 @@ const Dashboard = () => {
           },
         }
       );
-      console.log(response);
       setBalance(response.data.balance?.toFixed(2));
     } catch (error) {
       console.log(error);
@@ -28,12 +27,9 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <div>
-      <Appbar />
-      <div className="m-8">
-        <Balance value={balance} />
-        <Users />
-      </div>
+    <div className="w-full m-8">
+      <Balance value={balance} />
+      <Users />
     </div>
   );
 };

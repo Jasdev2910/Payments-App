@@ -19,6 +19,30 @@ const signinSchema = zod.object({
   password: zod.string(),
 });
 
+router.get("/me", authMiddleware, async (req, res) => {
+  const userId = req.userId;
+
+  if (!userId) {
+    return res.status(403).json({
+      message: "Not Logged In",
+    });
+  }
+
+  const userData = await User.findById(userId);
+  const accountDetails = await Account.findOne({ userId });
+
+  res.json({
+    user: {
+      firstName: userData.firstName,
+      lastName: userData.lastName,
+      username: userData.username,
+    },
+    account: {
+      balance: accountDetails.balance,
+    },
+  });
+});
+
 router.post("/signup", async (req, res) => {
   const body = req.body;
   const { success } = signupSchema.safeParse(req.body);
@@ -40,6 +64,7 @@ router.post("/signup", async (req, res) => {
   }
 
   const user = await User.create(body);
+  console.log(user);
   const userId = user._id;
 
   await Account.create({
@@ -56,6 +81,7 @@ router.post("/signup", async (req, res) => {
 
   res.json({
     message: "user created successfully",
+    name: user.firstName,
     token: token,
   });
 });
@@ -84,6 +110,7 @@ router.post("/signin", async (req, res) => {
     );
     res.json({
       token,
+      name: user.firstName,
     });
     return;
   }

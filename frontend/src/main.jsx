@@ -1,15 +1,19 @@
-import React, { createRef } from "react";
+import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import "./index.css";
 import { Signup } from "./components/Signup.jsx";
 import { Signin } from "./components/Signin.jsx";
-import Dashboard from "./components/Dashboard.jsx";
 import { SendMoney } from "./components/SendMoney.jsx";
+import Body from "./components/Body.jsx";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+  },
   {
     path: "/signup",
     element: <Signup />,
@@ -20,7 +24,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <Dashboard />,
+    element: <Body />,
   },
   {
     path: "/send",
