@@ -7,6 +7,8 @@ import { Signup } from "./components/Signup.jsx";
 import { Signin } from "./components/Signin.jsx";
 import { SendMoney } from "./components/SendMoney.jsx";
 import Body from "./components/Body.jsx";
+import Update from "./components/Update.jsx";
+import Dashboard from "./components/Dashboard.jsx";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const router = createBrowserRouter([
@@ -23,8 +25,16 @@ const router = createBrowserRouter([
     element: <Signin />,
   },
   {
-    path: "/dashboard",
+    path: "/body",
     element: <Body />,
+    children: [
+      { index: true, element: <Dashboard /> },
+      { path: "dashboard", element: <Dashboard /> },
+      {
+        path: "update",
+        element: <Update />,
+      },
+    ],
   },
   {
     path: "/send",

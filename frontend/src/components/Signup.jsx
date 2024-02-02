@@ -23,7 +23,7 @@ export const Signup = () => {
   }
 
   if (user.userDetails) {
-    return <Navigate to="/dashboard" />;
+    return <Navigate to="/body" />;
   }
 
   return (
@@ -76,7 +76,7 @@ export const Signup = () => {
                   setError("");
                   localStorage.setItem("token", response.data.token);
                   console.log(response);
-                  navigate("/dashboard");
+                  navigate("/body");
                 } catch (error) {
                   setError(error.response.data.message);
                   console.log(error);

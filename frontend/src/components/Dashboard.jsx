@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Balance } from "./Balance";
 import { Users } from "./Users";
 import axios from "axios";
+import { useLocation } from "react-router-dom";
 
 const Dashboard = () => {
   const [balance, setBalance] = useState(0);
+  // const [userDetails, setUserDetails] = useState("");
 
   const getBalnce = async () => {
     try {
@@ -16,7 +18,7 @@ const Dashboard = () => {
           },
         }
       );
-      setBalance(response.data.balance?.toFixed(2));
+      setBalance(response.data.balance);
     } catch (error) {
       console.log(error);
     }
@@ -27,7 +29,7 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <div className="w-full m-8">
+    <div className="w-full m-4 border-l-2 pl-4">
       <Balance value={balance} />
       <Users />
     </div>

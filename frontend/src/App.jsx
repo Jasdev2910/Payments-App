@@ -12,7 +12,7 @@ function App() {
     return <Navigate to={"/signin"} />;
   }
 
-  return <Navigate to={"/dashboard"} />;
+  return <Navigate to={"/body"} />;
 }
 
 export default App;

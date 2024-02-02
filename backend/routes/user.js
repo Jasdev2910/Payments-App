@@ -43,6 +43,27 @@ router.get("/me", authMiddleware, async (req, res) => {
   });
 });
 
+router.get("/", authMiddleware, async (req, res) => {
+  const userId = req.userId;
+
+  if (!userId) {
+    return res.status(403).json({
+      message: "Not Logged In",
+    });
+  }
+
+  const userData = await User.findById(userId);
+
+  res.json({
+    user: {
+      firstName: userData.firstName,
+      lastName: userData.lastName,
+      username: userData.username,
+      password: userData.password,
+    },
+  });
+});
+
 router.post("/signup", async (req, res) => {
   const body = req.body;
   const { success } = signupSchema.safeParse(req.body);
@@ -124,6 +145,7 @@ const updateBody = zod.object({
   password: zod.string().optional(),
   firstName: zod.string().optional(),
   lastName: zod.string().optional(),
+  password: zod.string().optional(),
 });
 
 router.put("/", authMiddleware, async (req, res) => {

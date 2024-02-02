@@ -21,7 +21,7 @@ export const Signin = () => {
   }
 
   if (user.userDetails) {
-    return <Navigate to="/dashboard" />;
+    return <Navigate to="/body" />;
   }
 
   return (
@@ -56,7 +56,7 @@ export const Signin = () => {
                     }
                   );
                   setError("");
-                  navigate("/dashboard");
+                  navigate("/body");
                   localStorage.setItem("token", response.data.token);
                   console.log(response);
                 } catch (error) {

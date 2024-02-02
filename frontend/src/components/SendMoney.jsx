@@ -22,8 +22,8 @@ export const SendMoney = () => {
           {response === "OK" ? (
             <div className="w-28 m-auto">
               <img src={doneImg} alt="done-img" />
-              <p className="font-bold text-center">
-                RS. {amount} Transaction Done
+              <p className="font-bold text-center text-xl">
+                <span className="text-xl">₹</span> {amount} sent to {name}
               </p>
             </div>
           ) : (
@@ -48,6 +48,7 @@ export const SendMoney = () => {
                     onChange={(e) => {
                       setAmount(e.target.value);
                     }}
+                    autoFocus
                     type="number"
                     className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
                     id="amount"
@@ -75,7 +76,6 @@ export const SendMoney = () => {
                       }, 200);
                     } catch (error) {
                       console.log(error);
-                      navigate("/signup");
                       setError(error.response.data.message);
                     }
                   }}

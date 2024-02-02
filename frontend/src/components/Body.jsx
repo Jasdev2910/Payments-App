@@ -3,7 +3,8 @@ import { Appbar } from "./Appbar";
 import Dashboard from "./Dashboard";
 import { Component } from "./Sidebar";
 import useUser from "../hooks/useUser";
-import { Navigate } from "react-router-dom";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
+import Update from "./Update";
 
 const Body = () => {
   const user = useUser();
@@ -17,10 +18,10 @@ const Body = () => {
 
   return (
     <div>
-      <Appbar />
-      <div className="flex w-screen">
+      <Appbar name={user?.userDetails?.user?.firstName} />
+      <div className="flex">
         <Component />
-        <Dashboard />
+        <Outlet context={user.userDetails} />
       </div>
     </div>
   );
