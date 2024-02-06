@@ -26,14 +26,55 @@ This Payments App is a comprehensive solution designed to facilitate seamless fi
 - **Protected Routes:** Guards sensitive pages from unauthorized access, ensuring that users must be signed in to view certain content.
 - **Transaction Integrity:** By implementing atomic transactions, the app ensures that all financial operations are reliably processed.
 
+## Screenshots
+
+![App Screenshot](./frontend/src/assets/Screenshot1.png)
+![App Screenshot](./frontend/src/assets/Screenshot2.png)
+![App Screenshot](./frontend/src/assets/Screenshot3.png)
+![App Screenshot](./frontend/src/assets/Screenshot4.png)
+![App Screenshot](./frontend/src/assets/Screenshot5.png)
+![App Screenshot](./frontend/src/assets/Screenshot6.png)
+
 ## Installation
 
-To get started with the Payments App, follow these steps:
+### Prerequisites
 
-1. Clone the repository to your local machine.
-2. Install the required dependencies by running `npm install`.
-3. Start the application by running `npm start`. This will launch the app on your local server.
-4. Navigate to the sign-in page to create an account and begin using the app.
+- Node.js installed on your local machine.
+- MongoDB account for database management.
+
+### Setup Instructions
+
+**Frontend:**
+
+1. Navigate to the frontend directory in your terminal.
+2. Install the required dependencies by running:
+   ```sh
+   npm install
+   ```
+3. Start the frontend application in development mode by running:
+   ```sh
+   npm run dev
+   ```
+
+**Backend:**
+
+1. Navigate to the backend directory in your terminal.
+2. Install the required dependencies by running:
+   ```sh
+   npm install
+   ```
+3. Create a `.env` file in the root of the backend directory.
+4. Inside the `.env` file, specify your MongoDB URL and the port you wish to use for the server:
+   ```env
+   MONGODB_URL=your_mongodb_connection_string_here
+   PORT=your_preferred_port
+   ```
+5. Start the backend server by running:
+   ```sh
+   node index.js
+   ```
+
+This will set up both the frontend and backend parts of the Payments App. Ensure both the frontend and backend servers are running to use the app fully.
 
 ## Contributing
 
