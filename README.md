@@ -4,14 +4,15 @@
 
 This Payments App is a comprehensive solution designed to facilitate seamless financial transactions between users. It features a unique account creation process that assigns a random balance to each new account, enhancing the element of surprise and engagement for users. The app ensures a secure and efficient way of sending money, guaranteeing that transactions are either fully completed or not processed at all, thus maintaining transaction integrity.
 
-## Features
+### Features
 
-- **Random Balance Assignment:** Each account is created with a random balance, providing an engaging start for users.
-- **Secure Transactions:** Ensures that money transfers between users are executed completely or not at all, avoiding any partial transaction issues.
-- **Profile Updates:** Users have the ability to update their profile information, ensuring their details are always current.
-- **Authentication:** Utilizes JSON Web Tokens (JWT) for authentication, securing the app and user data effectively.
-- **Protected Routing:** Implements protected routes to prevent unauthorized access to certain parts of the app, such as the dashboard.
-- **Sign-in/Sign-out:** Streamlined sign-in process that directs users with a token in local storage to the sign-in page for enhanced security. Logging out clears the JWT token, ensuring user session termination.
+- **Random Balance Assignment**: Each account is created with a random balance, providing an engaging start for users.
+- **Secure Transactions**: Ensures that money transfers between users are executed completely or not at all, avoiding any partial transaction issues.
+- **Profile Updates**: Users have the ability to update their profile information, ensuring their details are always current.
+- **Authentication**: Utilizes JSON Web Tokens (JWT) for authentication, securing the app and user data effectively.
+- **Protected Routing**: Implements protected routes to prevent unauthorized access to certain parts of the app, such as the dashboard.
+- **Sign-in/Sign-out**: Streamlined sign-in process that directs users with a token in local storage to the sign-in page for enhanced security. Logging out clears the JWT token, ensuring user session termination.
+- **Transaction History Tracking**: Offers users the ability to view a detailed history of their transactions, including information on whom they have sent money to and from whom they have received money. This feature enhances transparency and allows users to easily keep track of their financial activities within the app.
 
 ## How to Use
 
@@ -34,6 +35,7 @@ This Payments App is a comprehensive solution designed to facilitate seamless fi
 ![App Screenshot](./frontend/src/assets/Screenshot4.png)
 ![App Screenshot](./frontend/src/assets/Screenshot5.png)
 ![App Screenshot](./frontend/src/assets/Screenshot6.png)
+![App Screenshot](./frontend/src/assets/Screenshot7.png)
 
 ## Installation
 
