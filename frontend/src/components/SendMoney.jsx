@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import doneImg from "../assets/verify.png";
+import { TRANSFER_URL } from "../constants";
 
 export const SendMoney = () => {
   const [amount, setAmount] = useState(null);
@@ -59,7 +60,7 @@ export const SendMoney = () => {
                   onClick={async () => {
                     try {
                       const response = await axios.post(
-                        "http://localhost:3000/api/v1/account/transfer",
+                        TRANSFER_URL,
                         { to: id, amount },
                         {
                           headers: {

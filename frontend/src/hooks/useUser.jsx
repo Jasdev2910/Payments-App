@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { AUTH_URL } from "../constants";
 
 const useUser = () => {
   const [loading, setLoading] = useState(true);
@@ -7,7 +8,7 @@ const useUser = () => {
 
   const getDetails = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/api/v1/user/me", {
+      const res = await axios.get(AUTH_URL, {
         headers: { Authorization: "Bearer " + localStorage.getItem("token") },
       });
 

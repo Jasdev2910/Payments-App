@@ -3,6 +3,7 @@ import { InputBox } from "./InputBox";
 import { Button } from "./Button";
 import { useOutletContext } from "react-router-dom";
 import axios from "axios";
+import { GET_USER_URL, UPDATE_USER_URL } from "../constants";
 
 const Update = () => {
   const [firstName, setFirstName] = useState("");
@@ -14,7 +15,7 @@ const Update = () => {
 
   const getData = async () => {
     try {
-      const userData = await axios.get("http://localhost:3000/api/v1/user/", {
+      const userData = await axios.get(GET_USER_URL, {
         headers: { Authorization: "Bearer " + localStorage.getItem("token") },
       });
 
@@ -72,7 +73,7 @@ const Update = () => {
             onClick={async () => {
               try {
                 const res = await axios.put(
-                  "http://localhost:3000/api/v1/user/",
+                  UPDATE_USER_URL,
                   { firstName, lastName, username, password },
                   {
                     headers: {

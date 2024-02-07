@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { GEt_HISTORY_URL } from "../constants";
 
 const useFetchHistory = () => {
   const [loading, setLoading] = useState(true);
@@ -7,7 +8,7 @@ const useFetchHistory = () => {
 
   const getHistory = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/api/v1/history", {
+      const response = await axios.get(GEt_HISTORY_URL, {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
         },

@@ -1,0 +1,10 @@
+export const BALANCE_URL = "http://localhost:3000/api/v1/account/balance";
+export const TRANSFER_URL = "http://localhost:3000/api/v1/account/transfer";
+export const SIGNIN_URL = "http://localhost:3000/api/v1/user/signin";
+export const SIGNUP_URL = "http://localhost:3000/api/v1/user/signup";
+export const GET_USER_URL = "http://localhost:3000/api/v1/user/";
+export const UPDATE_USER_URL = "http://localhost:3000/api/v1/user/";
+export const GET_ALL_USER_URL =
+  "http://localhost:3000/api/v1/user/bulk?filter=";
+export const GEt_HISTORY_URL = "http://localhost:3000/api/v1/history";
+export const AUTH_URL = "http://localhost:3000/api/v1/user/me";

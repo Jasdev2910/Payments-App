@@ -11,10 +11,10 @@ const History = () => {
   }
 
   return (
-    <div className="w-full flex flex-col items-center p-3">
+    <div className="w-full flex flex-col items-center px-5">
       <h1 className="text-xl py-5  font-bold">History</h1>
       {details.historyDetails.map((detail) => (
-        <div className="w-full flex items-center justify-between shadow-md py-5 border px-3 m-2">
+        <div className="w-full flex items-center justify-between shadow-md py-5 border px-3 mb-2">
           <div className="flex flex-col justify-between ">
             <div className="font-bold ">
               <h3>{detail.name}</h3>

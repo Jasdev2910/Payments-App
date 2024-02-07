@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Button } from "./Button";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { GET_ALL_USER_URL } from "../constants";
 
 export const Users = () => {
   // Replace with backend call
@@ -11,7 +12,7 @@ export const Users = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/v1/user/bulk?filter=" + filter, {
+      .get(GET_ALL_USER_URL + filter, {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
         },

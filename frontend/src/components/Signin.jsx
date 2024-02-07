@@ -7,6 +7,7 @@ import { BottomWarning } from "./BottomWarning";
 import axios from "axios";
 import { Navigate, useNavigate } from "react-router-dom";
 import useUser from "../hooks/useUser";
+import { SIGNIN_URL } from "../constants";
 
 export const Signin = () => {
   const [username, setUsername] = useState("");
@@ -48,13 +49,10 @@ export const Signin = () => {
             <Button
               onClick={async () => {
                 try {
-                  const response = await axios.post(
-                    "http://localhost:3000/api/v1/user/signin",
-                    {
-                      username,
-                      password,
-                    }
-                  );
+                  const response = await axios.post(SIGNIN_URL, {
+                    username,
+                    password,
+                  });
                   setError("");
                   navigate("/body");
                   localStorage.setItem("token", response.data.token);

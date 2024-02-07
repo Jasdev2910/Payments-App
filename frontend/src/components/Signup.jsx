@@ -7,6 +7,7 @@ import { BottomWarning } from "./BottomWarning";
 import axios from "axios";
 import { Navigate, useNavigate } from "react-router-dom";
 import useUser from "../hooks/useUser";
+import { SIGNUP_URL } from "../constants";
 
 export const Signup = () => {
   const [firstName, setFirstName] = useState("");
@@ -64,15 +65,12 @@ export const Signup = () => {
             <Button
               onClick={async () => {
                 try {
-                  const response = await axios.post(
-                    "http://localhost:3000/api/v1/user/signup",
-                    {
-                      firstName,
-                      lastName,
-                      username,
-                      password,
-                    }
-                  );
+                  const response = await axios.post(SIGNUP_URL, {
+                    firstName,
+                    lastName,
+                    username,
+                    password,
+                  });
                   setError("");
                   localStorage.setItem("token", response.data.token);
                   console.log(response);

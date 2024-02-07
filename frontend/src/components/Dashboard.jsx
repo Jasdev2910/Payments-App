@@ -3,6 +3,7 @@ import { Balance } from "./Balance";
 import { Users } from "./Users";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
+import { BALANCE_URL } from "../constants";
 
 const Dashboard = () => {
   const [balance, setBalance] = useState(0);
@@ -10,14 +11,11 @@ const Dashboard = () => {
 
   const getBalnce = async () => {
     try {
-      const response = await axios.get(
-        "http://localhost:3000/api/v1/account/balance",
-        {
-          headers: {
-            Authorization: "Bearer " + localStorage.getItem("token"),
-          },
-        }
-      );
+      const response = await axios.get(BALANCE_URL, {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+      });
       setBalance(response.data.balance);
     } catch (error) {
       console.log(error);
