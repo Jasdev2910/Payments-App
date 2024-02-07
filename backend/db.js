@@ -1,8 +1,28 @@
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+const { string } = require("zod");
 dotenv.config();
 
 mongoose.connect(process.env.URI);
+
+const historySchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  amount: {
+    type: Number,
+    required: true,
+  },
+  sent: {
+    type: Boolean,
+    required: true,
+  },
+  timestamp: {
+    type: Date,
+    default: Date.now,
+  },
+});
 
 const userSchema = mongoose.Schema({
   username: {
@@ -31,6 +51,7 @@ const userSchema = mongoose.Schema({
     trim: true,
     maxLength: 30,
   },
+  history: [historySchema],
 });
 
 const accountSchema = new mongoose.Schema({
@@ -47,8 +68,10 @@ const accountSchema = new mongoose.Schema({
 
 const User = mongoose.model("User", userSchema);
 const Account = mongoose.model("Account", accountSchema);
+// const History = mongoose.model("History", historySchema);
 
 module.exports = {
   User,
   Account,
+  // History,
 };

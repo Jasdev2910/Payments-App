@@ -9,6 +9,7 @@ import { SendMoney } from "./components/SendMoney.jsx";
 import Body from "./components/Body.jsx";
 import Update from "./components/Update.jsx";
 import Dashboard from "./components/Dashboard.jsx";
+import History from "./components/History.jsx";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const router = createBrowserRouter([
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: "update",
         element: <Update />,
+      },
+      {
+        path: "history",
+        element: <History />,
       },
     ],
   },

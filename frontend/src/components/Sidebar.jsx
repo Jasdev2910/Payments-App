@@ -15,6 +15,11 @@ export function Component() {
             Update
           </ul>
         </Link>
+        <Link to="/body/history">
+          <ul className="my-2 shadow-lg py-3 px-10 font-semibold active:bg-slate-100 hover:bg-slate-100">
+            History
+          </ul>
+        </Link>
         <Link>
           <ul
             onClick={() => {

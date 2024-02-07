@@ -8,13 +8,13 @@ import Update from "./Update";
 
 const Body = () => {
   const user = useUser();
-  if (user.loading) {
-    return "Loading....";
-  }
+  // if (user.loading) {
+  //   return "Loading....";
+  // }
 
-  if (!user.userDetails) {
-    return <Navigate to="/signin" />;
-  }
+  // if (!user.userDetails) {
+  //   return <Navigate to="/signin" />;
+  // }
 
   return (
     <div>

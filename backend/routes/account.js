@@ -1,7 +1,7 @@
 const express = require("express");
 const authMiddleware = require("../middleware/authMiddleware");
-const { Account } = require("../db");
-const { mongo, default: mongoose } = require("mongoose");
+const { User, Account, History } = require("../db");
+const mongoose = require("mongoose");
 
 const router = express.Router();
 
@@ -46,6 +46,10 @@ router.post("/transfer", authMiddleware, async (req, res) => {
   // we will check that account exist to whom we wnat to send money
   const toAccount = await Account.findOne({ userId: to });
 
+  console.log(toAccount);
+  // console.log(typeof userData.firstName);
+  // console.log(userData2.firstName);
+
   if (!toAccount) {
     return res.status(400).json({
       message: "Invalid Account",
@@ -71,6 +75,31 @@ router.post("/transfer", authMiddleware, async (req, res) => {
     }
   ).session(session);
 
+  //senders history
+  const receiver = await User.findById(to);
+  const sender = await User.findById(req.userId);
+
+  await User.findByIdAndUpdate(req.userId, {
+    $push: {
+      history: {
+        $each: [{ name: receiver.firstName, amount: amount, sent: true }],
+        $position: 0,
+      },
+    },
+  });
+
+  //receivers history
+
+  await User.findByIdAndUpdate(to, {
+    $push: {
+      history: {
+        $each: [{ name: sender.firstName, amount: amount, sent: false }],
+        $position: 0,
+      },
+    },
+  });
+
+  //
   // Commit the transaction
   await session.commitTransaction(); //all the changes made in these operations are saved. If the transaction is
   //aborted (using session.abortTransaction()), none of the changes made in these operations are saved.
@@ -81,3 +110,48 @@ router.post("/transfer", authMiddleware, async (req, res) => {
 });
 
 module.exports = router;
+
+// const receiverHistory = await History.create({
+//   userId: to,
+//   to: userData2.firstName, // Assuming 'to' is intended to store the sender's name
+//   amount: amount,
+//   from: userData.firstName, // Assuming 'from' is intended to store the recipient's name
+// });
+// console.log(receiverHistory);
+// const ans2 = await History.create(
+//   {
+//     userId: to,
+//   }
+//   {
+//     $set: {
+//       to: userData2.firstName,
+//       amount: amount,
+//       from: userData.firstName,
+//     },
+//   }
+// );
+// console.log(ans2);
+
+// const senderHistory = await History.create({
+//   userId: req.userId,
+//   to: userData.firstName, // Assuming 'to' is intended to store the recipient's name
+//   amount: amount,
+//   from: userData2.firstName, // Assuming 'from' is intended to store the sender's name
+// });
+
+// console.log(senderHistory);
+
+// const ans = await History.create(
+//   {
+//     userId: req.userId,
+//   }
+//   {
+//     $set: {
+//       to: userData.firstName,
+//       amount: amount,
+//       from: userData2.firstName,
+//     },
+//   }
+// );
+
+// console.log(ans);
