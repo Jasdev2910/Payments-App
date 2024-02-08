@@ -8,6 +8,7 @@ import axios from "axios";
 import { Navigate, useNavigate } from "react-router-dom";
 import useUser from "../hooks/useUser";
 import { SIGNIN_URL } from "../constants";
+import { PasswordInput } from "./PasswordInput";
 
 export const Signin = () => {
   const [username, setUsername] = useState("");
@@ -38,7 +39,7 @@ export const Signin = () => {
             placeholder="harkirat@gmail.com"
             label={"Email"}
           />
-          <InputBox
+          <PasswordInput
             onChange={(e) => {
               setPassword(e.target.value);
             }}

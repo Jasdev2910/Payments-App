@@ -5,9 +5,10 @@ import { InputBox } from "./InputBox";
 import { Button } from "./Button";
 import { BottomWarning } from "./BottomWarning";
 import axios from "axios";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import useUser from "../hooks/useUser";
 import { SIGNUP_URL } from "../constants";
+import { PasswordInput } from "./PasswordInput";
 
 export const Signup = () => {
   const [firstName, setFirstName] = useState("");
@@ -16,6 +17,8 @@ export const Signup = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
+  const path = location.pathname;
 
   const user = useUser();
   console.log(user);
@@ -54,7 +57,7 @@ export const Signup = () => {
             placeholder="harkirat@gmail.com"
             label={"Email"}
           />
-          <InputBox
+          <PasswordInput
             onChange={(e) => {
               setPassword(e.target.value);
             }}

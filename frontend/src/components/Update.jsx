@@ -3,7 +3,8 @@ import { InputBox } from "./InputBox";
 import { Button } from "./Button";
 import { useOutletContext } from "react-router-dom";
 import axios from "axios";
-import { GET_USER_URL, UPDATE_USER_URL } from "../constants";
+import { GET_USER_URL } from "../constants";
+import { PasswordInput } from "./PasswordInput";
 
 const Update = () => {
   const [firstName, setFirstName] = useState("");
@@ -60,7 +61,7 @@ const Update = () => {
           placeholder="harkirat@gmail.com"
           label={"Email"}
         />
-        <InputBox
+        <PasswordInput
           onChange={(e) => {
             setPassword(e.target.value);
           }}
